@@ -108,15 +108,17 @@ class SiteController extends Controller
         ]);
     }
 
+
     /**
      * @param $hash
      * @param $email
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
      */
     public function actionConfirm($hash, $email)
     {
         if (User::confirmEmail($hash, $email)) {
-            $this->redirect('/msg', [
+            return $this->redirect(['/msg',
                 'msg' => 'регистрация подтверждена'
             ]);
         };

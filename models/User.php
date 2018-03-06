@@ -137,6 +137,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         $sub = 'Подтверждение регистрации';
         $text = "подтвердить регистрацию --> <a href='$url'>Перейти</a>";
 
+        return mail($this->email, $sub, $text);
+
         return \Yii::$app->mailer->compose()
             ->setFrom('admin@test.haskicbr.ru')
             ->setTo($this->email)
